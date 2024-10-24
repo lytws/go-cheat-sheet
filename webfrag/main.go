@@ -30,7 +30,7 @@ func Ctrl2(query map[string]string, p P) ToResponse[R] {
 		return ToJsonErrResponse[R](400, fmt.Errorf("a is empty"))
 	}
 
-	return ToJsonResponse(200, R{Ret: fmt.Sprintf("ok, got: %s", p.A)})
+	return ToJsonResponse(200, R{Ret: fmt.Sprintf("ok, got: %s, %+v", p.A, query)})
 }
 
 func main() {
