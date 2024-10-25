@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// ToResponse 响应函数, 将数据转换到 http 响应中
 type ToResponse[T any] func(http.ResponseWriter) error
 
 func ToJsonResponse[T any](respCode int, data T) ToResponse[T] {

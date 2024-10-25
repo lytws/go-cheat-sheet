@@ -4,6 +4,8 @@ import "net/http"
 
 type OneParamController[T any, U any] func(T) ToResponse[U]
 
+// WrapOneParam 包装控制器, 单参数控制器版本
+// 必须传入参数对应的提取器 ext
 func WrapOneParam[T any, U any](
 	fn OneParamController[T, U],
 	ext Extractor[T],
@@ -26,6 +28,8 @@ func WrapOneParam[T any, U any](
 
 type TwoParamController[T any, U any, V any] func(T, U) ToResponse[V]
 
+// WrapOneParam 包装控制器, 双参数控制器版本
+// 必须传入参数对应的提取器 ext1, ext2
 func WrapTwoParam[T any, U any, V any](
 	fn TwoParamController[T, U, V],
 	ext1 Extractor[T],

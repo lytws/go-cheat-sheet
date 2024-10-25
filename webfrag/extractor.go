@@ -5,11 +5,14 @@ import (
 	"net/http"
 )
 
+// Extractor 提取器
+// 结构体定义, 包含提取函数指针以及提取出错时的响应函数指针
 type Extractor[T any] struct {
 	FromRequest          ExtractFromRequest[T]
 	ExtractErrorResponse func(error) ToResponse[error]
 }
 
+// ExtractFromRequest 提取函数结构. 提取过程中出现错误时返回 error
 type ExtractFromRequest[T any] func(*http.Request) (T, error)
 
 func JsonBodyExtractor[T any]() Extractor[T] {
